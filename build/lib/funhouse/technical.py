@@ -20,6 +20,8 @@ class TA:
             
             self.info['main']['price'] = origin['close']
             self.info['main'].set_index(time_series, inplace=True)
+
+            self.info['main'].sort_index()
             self.fib = None
             
     def SMA(self, window=30):
@@ -88,7 +90,7 @@ class TA:
         lower_6= basis - (1*dev)
         
         fibframe = pd.DataFrame()
-        fibframe["price"] = self.origin['close']
+        fibframe["price"] = self.info['main']['price']
         fibframe["up1"] = upper_1
         fibframe["up2"] = upper_2
         fibframe["up3"] = upper_3
@@ -103,7 +105,7 @@ class TA:
         fibframe["low5"] = lower_5
         fibframe["low6"] = lower_6
         
-        time_series = pd.to_datetime(self.origin['time'], unit='s')
+        time_series = pd.to_datetime(self.info['main']['time'], unit='s')
         fibframe.set_index(time_series, inplace=True)
         fibframe = fibframe.dropna()
         self.fib = fibframe

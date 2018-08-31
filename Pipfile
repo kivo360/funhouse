@@ -14,6 +14,8 @@ funtime = "*"
 funpicker = "*"
 dask = {version = "*", extras = ["complete"]}
 streamz-latest = "*"
+tqdm = "*"
+funhouse = {editable = true, path = "."}
 
 [dev-packages]
 pylint = "*"

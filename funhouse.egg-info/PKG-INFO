@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: funhouse
-Version: 0.1
+Version: 0.1.2
 Summary: Funguana's Foundational Preprocessing Library
 Home-page: UNKNOWN
 Author: Kevin Hill
@@ -31,8 +31,6 @@ Description: # Funhouse - Funguana's Time Series Pre-processing library for our 
         from funtime import Store, Converter
         from funpicker import Query
         from funhouse import TA, index_time
-        import mimesis # this is used to seed data for our test
-        import time
         
         # Create a library and access the store you want
         store = Store().create_lib("ticker.Price").get_store()
@@ -60,7 +58,10 @@ Description: # Funhouse - Funguana's Time Series Pre-processing library for our 
         tframe.fib
         
         
-        # can use for anything beyond here
+        # can store the TA indicators here
+        # Note: This part isnt tested yet
+        
+        
         ```
         
         ## How to install
