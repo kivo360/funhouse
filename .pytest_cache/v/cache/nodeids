@@ -1,0 +1,7 @@
+[
+  "test/test_simple_preprocessing.py::test_download_btc_data",
+  "test/test_simple_preprocessing.py::test_save_btc_data",
+  "test/test_simple_preprocessing.py::test_query_btc_data",
+  "test/test_simple_preprocessing.py::test_get_preprocessed",
+  "test/test_simple_preprocessing.py::test_store_preprocessed"
+]

@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pytest = "*"
+jupyter = "*"
+scikit-fuzzy = "*"
+matplotlib = "*"
+notebook = "*"
+ta-lib = "*"
+funtime = "*"
+funpicker = "*"
+dask = {version = "*", extras = ["complete"]}
+streamz-latest = "*"
+
+[dev-packages]
+pylint = "*"
+
+[requires]
+python_version = "3.6"
