@@ -9,14 +9,14 @@ store = Store().create_lib("raw.Price").get_store()
 fpq = Query()
 btc_data = None
 def test_download_btc_data():
-    btc_data = fpq.get()
+    btc_data = fpq.set_period("day").get()
     assert btc_data is not None
     assert len(btc_data) > 0
 
 
 
 def test_save_btc_data():
-    btc_data = fpq.get()
+    btc_data = fpq.set_period("day").get()
     for btc in btc_data:
         # 'close': 6478.19, 'high': 6481.47, 'low': 6470.42, 'open': 6471.04, 'volumefrom': 96.06, 'volumeto': 624696.86
         store['raw.Price'].store({
@@ -30,7 +30,7 @@ def test_save_btc_data():
             "close": btc['close'],
             "volume": btc['volumeto'],
             "exchange": "CCCAGG",
-            "period": "minute"
+            "period": "day"
     
         })
     pass
@@ -55,18 +55,19 @@ def test_store_preprocessed():
     pass
 
 
-test_save_btc_data()
+# test_save_btc_data()
 # test_query_btc_data()
-test_get_preprocessed()
-latest = store['raw.Price'].query_latest({"type": "price", "limit":300, "exchange": "CCCAGG", "period": "minute"})
-
+# test_get_preprocessed()
+latest = store['raw.Price'].query_latest({"type": "price", "limit":500, "exchange": "CCCAGG", "period": "day"})
 ldf = Converter.to_dataframe(latest)
+print(ldf)
 dftimestamp = ldf['timestamp']
 dfdate = dftimestamp.apply(lambda x: datetime.utcfromtimestamp(x))
 ldf['date'] = dfdate
 ldf.set_index('date', inplace=True)
-
-ta = TA(ldf).SMA().FIBBB()
+print(ldf)
+ta = TA(ldf).SMA().SMA(100).SMA(250).FIBBB()
+print(ta.main)
 print(ta.fib)
 
 

@@ -44,7 +44,7 @@ class UploadCommand(Command):
 
 setup(
     name="funhouse",
-    version="0.1.2",
+    version="0.1.3",
     author="Kevin Hill",
     author_email="kevin@funguana.com",
     description="Funguana's Foundational Preprocessing Library",
