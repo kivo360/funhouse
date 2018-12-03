@@ -25,7 +25,7 @@ class TA:
             # Try to get the datetime using for loop until it has either run out of not failed
             # Place the date-time into a variable
             available = []
-            time_names = ['date', 'time', 'datetime', 'timestamp']
+            time_names = ['date', 'time', 'datetime', 'timestamp', 'datestamp']
             
             time_candidate = False
 
