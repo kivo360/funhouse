@@ -119,21 +119,27 @@ class TA:
         # Get EMA
         # Get real = STDDEV(close, timeperiod=5, nbdev=1)
         temp = self.origin.sort_index()
+        # base = self.origin['base'].iloc[0]
+
         # print(temp.index.values)
-        dev = ta.STDDEV(temp['close'].values, timeperiod=window, nbdev=stdev)
+        sti2 = pd.Series(temp['close'].values).rolling(window).std() * 3
+
+        sti = ta.STDDEV(temp['close'].values, timeperiod=window)
+        dev = sti * stdev
         basis = ta.EMA(temp['close'].values, timeperiod=window)
-        upper_1= basis + (0.236*dev)
-        upper_2= basis + (0.382*dev)
-        upper_3= basis + (0.5*dev)
-        upper_4= basis + (0.618*dev)
-        upper_5= basis + (0.764*dev)
-        upper_6= basis + (1*dev)
-        lower_1= basis - (0.236*dev)
-        lower_2= basis - (0.382*dev)
-        lower_3= basis - (0.5*dev)
-        lower_4= basis - (0.618*dev)
-        lower_5= basis - (0.764*dev)
-        lower_6= basis - (1*dev)
+        # print(dev)
+        upper_1= basis + (0.236*sti2)
+        upper_2= basis + (0.382*sti2)
+        upper_3= basis + (0.5*sti2)
+        upper_4= basis + (0.618*sti2)
+        upper_5= basis + (0.764*sti2)
+        upper_6= basis + (1*sti2)
+        lower_1= basis - (0.236*sti2)
+        lower_2= basis - (0.382*sti2)
+        lower_3= basis - (0.5*sti2)
+        lower_4= basis - (0.618*sti2)
+        lower_5= basis - (0.764*sti2)
+        lower_6= basis - (1*sti2)
         
         self.fib["price"] = self.origin['close']
         self.fib["up1"] = self.reverse(upper_1)  
