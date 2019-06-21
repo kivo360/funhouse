@@ -65,10 +65,10 @@ dftimestamp = ldf['timestamp']
 dfdate = dftimestamp.apply(lambda x: datetime.utcfromtimestamp(x))
 ldf['date'] = dfdate
 ldf.set_index('date', inplace=True)
-print(ldf)
+# print(ldf)
 ta = TA(ldf).SMA().SMA(100).SMA(250).FIBBB()
-print(ta.main)
-print(ta.fib)
+print(ta.main.tail(12))
+# print(ta.fib)
 
 
 # print(ldf.resample('3T').mean())
