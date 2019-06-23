@@ -30,13 +30,13 @@ class UploadCommand(Command):
 
     def run(self):
         try:
-            self.status("Removing previous builds…")
+            self.status("Removing previous builds...")
             rmtree(os.path.join(here, "dist"))
         except FileNotFoundError:
             pass
-        self.status("Building Source distribution…")
+        self.status("Building Source distribution...")
         os.system("{0} setup.py sdist bdist_wheel".format(sys.executable))
-        self.status("Uploading the package to PyPi via Twine…")
+        self.status("Uploading the package to PyPi via Twine...")
         os.system("sudo twine upload dist/*")
         sys.exit()
 
@@ -48,8 +48,8 @@ setup(
     author="Kevin Hill",
     author_email="kevin@funguana.com",
     description="Funguana's Foundational Preprocessing Library",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
+    # long_description=long_description,
+    # long_description_content_type="text/markdown",
     py_modules=["funhouse"],
     install_requires=['scipy', 'numpy', 'pandas', 'dask[complete]', 'ta-lib'], 
     packages=find_packages(),

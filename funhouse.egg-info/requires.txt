@@ -1,5 +1,5 @@
-scipy
+dask[complete]
 numpy
 pandas
-dask[complete]
+scipy
 ta-lib

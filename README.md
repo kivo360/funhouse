@@ -9,7 +9,7 @@ Funhouse currently only supports price and TA data. In the future it'll support 
 
 
 ## What makes `Funhouse` better?
-Currently it's only the simpler interface and modular library available for what we need.
+Currently it's only the simpler interface and modular library available for what we need. It uses the builder pattern to dynamically select the indicators we might be looking for
 
 
 ## How does it work?
